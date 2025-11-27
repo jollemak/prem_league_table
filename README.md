@@ -1,4 +1,4 @@
-# Premier League Table Visualization
+# Premier League Live Table
 
 ![Prem Table](image.png)
 
