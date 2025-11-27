@@ -1,4 +1,4 @@
-# Premier League Live Table
+# Premier League Live Standings and Teams
 
 ![Prem Table](assets/image.png)
 
