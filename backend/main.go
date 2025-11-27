@@ -14,15 +14,21 @@ func main() {
 
 	r.Use(cors.Default())
 
-	r.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(200, gin.H{
-			"message": "Welcome To Football API",
-			"routes":  "/table, /teams",
-		})
-	})
+	// r.Static("/", "./dist")
 
-	r.GET("/table", getTable)
-	r.GET("/teams", getTeams)
+ // Group API routes under the /api prefix
+    api := r.Group("/api")
+    {
+        api.GET("/", func(ctx *gin.Context) {
+            ctx.JSON(200, gin.H{
+                "message": "Welcome To Football API",
+                "routes":  "/api/table, /api/teams",
+            })
+        })
+
+        api.GET("/table", getTable)
+        api.GET("/teams", getTeams)
+    }
 
 	fmt.Println("Running on: http://localhost:8080")
 	r.Run(":8080")

@@ -5,13 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build": "vite build && npm run copy-dist",
+    "copy-dist": "cp -r dist ../backend/"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "axios": "1.13.2"
+
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

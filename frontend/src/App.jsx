@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { TabNav, TeamsGrid, LeagueTable, Loading, Header } from "./components";
@@ -11,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/teams")
+      .get("http://localhost:8080/api/teams")
       .then((res) => {
         setTeams(res.data.teams);
         setLoading(false);
@@ -24,7 +25,7 @@ export default function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/table")
+      .get("http://localhost:8080/api/table")
       .then((res) => {
         setTable(res.data);
         setLoading(false);

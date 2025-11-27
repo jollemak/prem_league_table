@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
-
-const TEAMS_URL = "https://www.thesportsdb.com/api/v1/json/123/search_all_teams.php?l=English_Premier_League"
-const TABLE_URL = "https://www.thesportsdb.com/api/v1/json/123/lookuptable.php?l=4328&s=2025-2026"
 
 type Team struct {
 	ID        string `json:"idTeam"`
@@ -32,10 +31,13 @@ type Table struct {
 	Points   string `json:"intPoints"`
 	Wins     string `json:"intWin"`
 	Losses   string `json:"intLoss"`
-	Badge string `json:"strBadge"`
+	Badge    string `json:"strBadge"`
 }
 
 func getTeams(c *gin.Context) {
+
+	godotenv.Load()
+	TEAMS_URL := os.Getenv("TEAMS_URL")
 
 	res, err := http.Get(TEAMS_URL)
 	if err != nil {
@@ -61,6 +63,8 @@ func getTeams(c *gin.Context) {
 }
 
 func getTable(c *gin.Context) {
+
+	TABLE_URL := os.Getenv("TABLE_URL")
 
 	res, err := http.Get(TABLE_URL)
 	if err != nil {
