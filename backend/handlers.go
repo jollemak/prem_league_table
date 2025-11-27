@@ -29,8 +29,10 @@ type Table struct {
 	TeamName string `json:"strTeam"`
 	Season   string `json:"strSeason"`
 	Form     string `json:"strForm"`
+	Points   string `json:"intPoints"`
 	Wins     string `json:"intWin"`
 	Losses   string `json:"intLoss"`
+	Badge string `json:"strBadge"`
 }
 
 func getTeams(c *gin.Context) {
@@ -68,8 +70,6 @@ func getTable(c *gin.Context) {
 	defer res.Body.Close()
 
 	body, _ := io.ReadAll(res.Body)
-
-
 
 	data := &Response{}
 
